@@ -1,0 +1,47 @@
+#Apply {
+  background-color: #fff;
+  padding: 30px 0 50px;
+
+  .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    width: 100%;
+
+    &:first-of-type {
+      justify-content: flex-start;
+    }
+    > div {
+      min-width: calc(100%/3);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 5px;
+      
+      label {
+        color: #333;
+      }
+      input, select {
+        margin-left: 10px;
+        border: 1px solid #bbb;
+        padding: 5px;
+        border-radius: 5px;
+      }
+      input {
+        width: 65%;
+      }
+      select {
+        width: 68%;
+      }
+
+    }
+    
+    .predef {
+      margin-right: 4%;
+    }
+    .ignor-row {
+      justify-content: initial;
+    }
+  }
+}

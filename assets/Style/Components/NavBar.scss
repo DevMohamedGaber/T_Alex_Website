@@ -1,0 +1,152 @@
+@mixin Active-Navbar-Link
+{
+	color: $main-color;
+	background-color: #fafafa;
+
+	&::before {
+		right: 0;
+	}
+}
+#Navbar {
+	width: 100%;
+	background-color: #fff;
+	box-shadow: 0 0 10px #ddd;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 999;
+
+	.container {
+		position: relative;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+	}
+
+	.logo {
+		height: $navbar-height;
+		color: $main-color;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		img {
+			width: 100px;
+		}
+	}
+	.links {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		align-items: center;
+
+		> li:not(.apply) {
+			position: relative;
+
+			> span, > a {
+				position: relative;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: $navbar-height;
+				color: black;
+				padding: 0 20px;
+				font-size: 1em;
+				overflow: hidden;
+				cursor: pointer;
+				transition: $main-transition-duration;
+
+				&::before {
+					content: "";
+					position: absolute;
+					width: 100%;
+					height: 3px;
+					background-color: $main-color;
+					bottom: 0;
+					right: -100%;
+					transition: $main-transition-duration;
+				}
+				&:hover {
+					@include Active-Navbar-Link;
+					.dropdown {
+						display: flex;
+					}
+				}
+			}
+
+			.dropdown {
+				position: absolute;
+				background-color: white;
+				list-style: none;
+				padding: 0 5px 2px;
+				margin: 0 -30px;
+				display: flex;
+				flex-wrap: wrap;
+				transition: opacity $main-transition-duration, top $main-transition-duration;
+				border-bottom: 3px solid $main-color;
+
+				li {
+					display: flex;
+					width: 100%;
+					padding: 10px;
+					cursor: pointer;
+					a {
+						color: #777;
+						transition: $main-transition-duration;
+					}
+
+					&:hover {
+						background-color: $main-hover-color;
+						color: $main-color;
+						a{
+							color: $main-color;
+						}
+					}
+				}
+			}
+			.v-enter-active, .v-leave-active {
+				transition: $main-transition-duration;
+				top: calc(100% + 1px);
+				opacity: 1;
+			}
+			.v-enter-to, .v-leave-from {
+				top: calc(100% + 1px);
+				opacity: 1;
+			}
+			.v-enter-from, .v-leave-to {
+				opacity: 0;
+				top: calc(100% + 50px);
+			}
+		}
+	
+		.apply {
+			margin-right: 10px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 0 20px;
+			background-color: $main-color;
+			border-radius: 15px;
+			height: 30px;
+			cursor: pointer;
+			transition: $main-transition-duration;
+
+			a {
+				color: white;
+				font-size: 16px;
+				font-weight: 600;
+			}
+
+			&:hover {
+				background-color: white;
+				border: 2px solid $main-color;
+
+				a {
+					color: $main-color;
+				}
+			}
+		}
+	}
+}
